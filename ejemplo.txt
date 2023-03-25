@@ -1,0 +1,2 @@
+let token1 = 'a'|'b'
+let token2 = 'c'*

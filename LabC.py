@@ -1,30 +1,29 @@
-import ctypes
+import re
+cadena = input("Ingrese cadena a verificar: ")
+#a cc b
 
-# Load the shared library containing the YAL-generated lexer
-lib = ctypes.CDLL('ejemplo.yal')
 
-# Define the token types
-TOK_IDENTIFIER = 1
-TOK_NUMBER = 2
-# ...
 
-# Define the lexer callback function
-def yylex():
-    token_type = lib.yylex()
-    if token_type == TOK_IDENTIFIER:
-        return ('IDENTIFIER', lib.yytext)
-    elif token_type == TOK_NUMBER:
-        return ('NUMBER', float(lib.yytext))
-    # ...
+with open('ejemplo.txt', 'r') as file:
+    for line in file:
+        text=line
+        # Input text
+        # text = "let token1 = 'a'|'b'\nlet token2 = 'c'*
+        regex = r'^let\s+(\w+)\s+=\s+(.*)$'
 
-# Initialize the lexer
-lib.yyrestart(ctypes.c_void_p(0))
-lib.yylineno = 1
+        matches = re.findall(regex, text, re.MULTILINE)
 
-# Tokenize input text
-input_text = 'some input text'
-while True:
-    token = yylex()
-    if not token:
-        break
-    print(token)
+        for match in matches:
+            name = match[0]
+            value = match[1].strip()
+            print(name, value)
+
+for token in cadena:
+    if token == 'a':
+        print('token1')
+    elif token == 'b':
+        print('token1')
+    elif token == 'c':
+        print('token2')
+    else:
+        pass
