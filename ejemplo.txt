@@ -1,2 +1,2 @@
-let token1 = 'a'|'b'
-let token2 = 'c'*
+var   + 5 *		-11 = otraVariable + 2
+2var=0
