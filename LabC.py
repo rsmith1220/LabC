@@ -85,14 +85,14 @@ s=''
 for key, value in tokens.items():
     s = f' {value}'
     s = s.replace('"', '')
+    s=s.strip()
     construir.append(s)
 
 
 
 # Print the updated string
 print(construir)
-
-            
+automata.cadena(construir)   
 
 
     
