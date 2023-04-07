@@ -1,6 +1,6 @@
 variable   + 5 *		-11 = otraVariable + 2
 variable3
-
+2var = 8
 /* Salida:
 Identificador
 Operador de suma
