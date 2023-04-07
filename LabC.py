@@ -6,7 +6,7 @@ numeros=['1','2','3','4','5','6','7','8','9','0','-1','-2','-3','-4','-5','-6','
 operadores=["*","+","|","?"]
 variables =['var','let']
 noentra=['@','/','!','&','^','%','$','#','[]']
-filita=0
+filita=1
 """ with open('entrada1.txt', 'r') as file:
     for line in file:
         text=line
@@ -51,9 +51,13 @@ filita=0
             #     print("Error lexico, token no reconocido")
             #     exit() """
 
-with open('ejemplo.txt', 'r') as file:
+with open('entrada1.txt', 'r') as file:
     for line in file:
         text=line
+        for char in noentra:
+            if char in line:
+                print("Error en la linea", filita,"\nEl programa se cerrara")
+                exit()
         # Input text
         # text = "let token1 = 'a'|'b'\nlet token2 = 'c'*
         regex = r'^let\s+(\w+)\s+=\s+(.*)$'
@@ -65,18 +69,18 @@ with open('ejemplo.txt', 'r') as file:
             value = match[1].strip()
             tokens[name]=value
             # print(tokens)
+            filita+=1
 
 
     acepta = ['ε','1','2','3','4','5','6','7','8','9','*','+','|','?','(',')']
 
-    # iterate through each key-value pair in the dictionary
+    #se itera para verificar cuales son las variables que no tienen un valor especifico
     for key in ['numero', 'identificador']:
-        # Extract the pattern from the dictionary
-        pattern = tokens[key][1:-1]  # remove the enclosing double quotes
-        # Replace the subpatterns with their corresponding values
+        
+        pattern = tokens[key][1:-1]  
         pattern = re.sub(r'digito', tokens['digito'][1:-1], pattern)
         pattern = re.sub(r'letra', tokens['letra'][1:-1], pattern)
-        # Update the dictionary with the new pattern
+        
         tokens[key] = f'"{pattern}"'
 
 print(tokens)
@@ -90,7 +94,7 @@ for key, value in tokens.items():
 
 
 
-# Print the updated string
+#se regresa el diccionario con sus respectivos valores
 print(construir)
 automata.cadena(construir)   
 

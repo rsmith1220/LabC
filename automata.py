@@ -330,7 +330,7 @@ def evaluatePostfix(regex):
     # guardar archivo DOT
     
     dot.render('afnfinal', format='png')
-    # dot.view()
+    dot.view()
     
 
     #print (afn)
@@ -373,10 +373,9 @@ def ejecutar(regex):
 
 # INGRESANDO EXPRESION REGULAR A TRABAJAR
 def cadena(lista):
-    import graphviz
-    g = Digraph()
-    contar=0
     
-    # ejecutar('2|1ε2|1(2|1)*εa|bεa|b(a|b|2|1)*')
     for i in lista:
         ejecutar(i)    
+
+    cadena = ''.join(['(' + item + ')' for item in lista])
+    ejecutar(cadena)
