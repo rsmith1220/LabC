@@ -65,7 +65,24 @@ with open('ejbasico.txt', 'r') as file:
             name = match[0]
             value = match[1].strip()
             tokens[name]=value
-            print(tokens)
+            # print(tokens)
+
+
+    acepta = ['ε','1','2','3','4','5','6','7','8','9','*','+','|','?','(',')']
+
+    # iterate through each key-value pair in the dictionary
+    for key in ['numero', 'identificador']:
+        # Extract the pattern from the dictionary
+        pattern = tokens[key][1:-1]  # remove the enclosing double quotes
+        # Replace the subpatterns with their corresponding values
+        pattern = re.sub(r'digito', tokens['digito'][1:-1], pattern)
+        pattern = re.sub(r'letra', tokens['letra'][1:-1], pattern)
+        # Update the dictionary with the new pattern
+        tokens[key] = f'"{pattern}"'
+
+    print(tokens)
+
+
 
             
 
