@@ -45,7 +45,7 @@ def reescribiendoExpr(regex):
 
         else:
             newExpr += regex[i]       
-    print ('Reescribiendo la expresion regular: ' + newExpr)
+    # print ('Reescribiendo la expresion regular: ' + newExpr)
     return newExpr
 
 def topostfix(regex):
@@ -122,10 +122,6 @@ class AFN:
             "Estado Final": self.estadoFinal,
             "transiciones": self.transiciones
         }
-        print ("estados:", self.estados)
-        print ("Estado Inicial: ", self.estadoInicial)
-        print ("Estado Final:", self.estadoFinal)
-        print ("transiciones:", self.transiciones)
         return object
 
 def basic(input):
@@ -157,7 +153,7 @@ def concat(nfa1, nfa2):
         afn.estadoFinal = nfa2.estadoFinal + maximum
         for transition in nfa1.transiciones:
             afn.transiciones.append(transition)
-            print(transition)
+            # print(transition)
         for transition in nfa2.transiciones:
             afn.transiciones.append(transition)
         return afn
@@ -280,33 +276,28 @@ def evaluatePostfix(regex):
             if(token == '*'):
                 afn = stack.pop()
                 result = kleene(afn)
-                print('*')
                 result.display()
                 stack.push(result)
             elif(token == '.'):
                 nfa2 = stack.pop()
                 nfa1 = stack.pop()
                 result = concat(nfa1,nfa2)
-                print('.')
                 result.display()
                 stack.push(result)
             elif(token == '|'):
                 nfa2 = stack.pop()
                 nfa1 = stack.pop()
                 result = union(nfa1,nfa2)
-                print('|')
                 result.display()
                 stack.push(result)
             elif(token == '?'):
                 afn = stack.pop()
                 result = conditional(afn)
-                print('?')
                 result.display()
                 stack.push(result)
             elif(token == '+'):
                 afn = stack.pop()
                 result = plus(afn)
-                print('+')
                 result.display()
                 stack.push(result)
     afn = AFN()
@@ -339,7 +330,7 @@ def evaluatePostfix(regex):
     # guardar archivo DOT
     
     dot.render('afnfinal', format='png')
-    dot.view()
+    # dot.view()
     
 
     #print (afn)
@@ -353,7 +344,6 @@ def evaluatePostfix(regex):
             lang.append(str(afn.transiciones[i]['=>']))
         lang = set(lang)
         f.write(str(lang))
-        print (lang)
         f.write('\n')
         f.write(str(afn.estadoInicial))
         f.write('\n')
@@ -370,13 +360,13 @@ def evaluatePostfix(regex):
 #Ejecutar Todo
 def ejecutar(regex):
     try:
-        print('\nExpresion regular ingresada: ' + regex)
+        print('\nCadena ingresada: ' + regex)
         regexprocess = reescribiendoExpr(regex)
         postfix = topostfix(regexprocess)
         print('Postfix: ' + postfix)
         return evaluatePostfix(postfix)
     except:
-        print("La expresion regular ingresada es incorrecta revisela y vuela a intentar")
+        print("La cadena es incorrecta\n")
     
     
 
