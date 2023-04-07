@@ -51,7 +51,7 @@ filita=0
             #     print("Error lexico, token no reconocido")
             #     exit() """
 
-with open('ejbasico.txt', 'r') as file:
+with open('ejemplo.txt', 'r') as file:
     for line in file:
         text=line
         # Input text

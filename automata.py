@@ -388,13 +388,5 @@ def cadena(lista):
     contar=0
     
     # ejecutar('2|1ε2|1(2|1)*εa|bεa|b(a|b|2|1)*')
-"""     for i in lista:
-        result = ejecutar(i)    
-        
-        contar+=1 """
-    
-    
-    
-
-
-
+    for i in lista:
+        ejecutar(i)    

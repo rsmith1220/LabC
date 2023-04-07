@@ -1,15 +1,4 @@
-variable   + 5 *		-11 = otraVariable + 2
-variable3
-2var = 8
-/* Salida:
-Identificador
-Operador de suma
-Numero
-Operador de multiplicacion
-Numero
-Operador de asignacion
-Identificador
-Operador de suma
-Numero
-Identificador
-*/
+let digito = "a*b"
+let numero = "digito*"
+let letra = "a?b+a"
+let identificador = "letra+digito|letra"

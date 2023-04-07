@@ -1,2 +1,4 @@
-var   + 5 *		-11 = otraVariable + 2
-2var=0
+let digito = "a+b"
+let numero = "digito*"
+let letra = "a|b+c"
+let identificador = "(letra|digito)*"
