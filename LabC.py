@@ -1,6 +1,5 @@
 import re
-# cadena = input("Ingrese cadena a verificar: ")
-#a cc b
+import automata
 
 tokens={}
 numeros=['1','2','3','4','5','6','7','8','9','0','-1','-2','-3','-4','-5','-6','-7','-8','-9']
@@ -80,9 +79,18 @@ with open('ejbasico.txt', 'r') as file:
         # Update the dictionary with the new pattern
         tokens[key] = f'"{pattern}"'
 
-    print(tokens)
+print(tokens)
+construir=[]
+s=''
+for key, value in tokens.items():
+    s = f' {value}'
+    s = s.replace('"', '')
+    construir.append(s)
 
 
+
+# Print the updated string
+print(construir)
 
             
 
